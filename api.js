@@ -59,7 +59,7 @@ $('.API').on('submit','form', function(event){
 	event.preventDefault();
 	createResponse();
 
-	$.ajax({ url: 'https://jsonplaceholder.typicode.com/posts' ,
+	$.ajax({ url: 'https://levelup-assessment-backend-odvoreherl.now.sh/api/submission' ,
 		method: 'POST',
 		data: JSON.stringify(obj),
 		dataType: 'json',
