@@ -49,36 +49,44 @@ function createResponse (){
 		} else if (ApiRespond[Object.keys(ApiRespond)[i]].type === 'hidden'){
 			myinput[i].value = ApiRespond[Object.keys(ApiRespond)[i]].value;
 		}
+
 	obj[Object.keys(ApiRespond)[i]] = myinput[i].value;
+	 if(myinput[i].type === 'number' ){
+	 	obj[Object.keys(ApiRespond)[i]] = Number(obj[Object.keys(ApiRespond)[i]]);
+	 } else if (myinput[i].type === 'checkbox'){
+	 	obj[Object.keys(ApiRespond)[i]] = Boolean(obj[Object.keys(ApiRespond)[i]]);
+	 }
+
+	 delete obj['submit'];
 	};
 
 };
 
 // ----- POSTING AS JSON RESPONSE -----------------------------------------------------------------------------
 
-
+var finalResponse = '';
 
 $('.API').on('submit','form', function(event){
 	event.preventDefault();
 	createResponse();
-	var finalResponse = JSON.stringify(obj, null, '\t') ;
+	finalResponse = JSON.stringify(obj, null, '\t') ;
 	console.log(finalResponse);
 
 	var settings = {
-  "async": true,
-  "crossDomain": true,
-  // "url": ""https://levelup-assessment-backend-odvoreherl.now.sh/api/submission",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "processData": false,
-  "data": finalResponse
-}
+	  "async": true,
+	  "crossDomain": true,
+	  "url": "https://levelup-assessment-backend-odvoreherl.now.sh/api/submission",
+	  "method": "POST",
+	  "headers": {
+	    "Content-Type": "application/json"
+	  },
+	  "processData": false,
+	  "data": finalResponse
+	}
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
+	$.ajax(settings).done(function (response) {
+	  console.log(response);
+	});
 
 });
 
