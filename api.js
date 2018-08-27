@@ -1,6 +1,6 @@
 var ApiRespond = '';
 
-$.ajax({ url: 'https://levelup-assessment-backend-odvoreherl.now.sh/api/getFormSchema',
+$.ajax({ url: 'https://levelup-assessment-backend-ddmwdsdlta.now.sh/api/getFormSchema',
 		method: 'GET',
 		success:function(data){
 			ApiRespond = data ;
@@ -75,7 +75,7 @@ $('.API').on('submit','form', function(event){
 	var settings = {
 	  "async": true,
 	  "crossDomain": true,
-	  "url": "https://levelup-assessment-backend-odvoreherl.now.sh/api/submission",
+	  "url": "https://levelup-assessment-backend-ddmwdsdlta.now.sh/api/submission",
 	  "method": "POST",
 	  "headers": {
 	    "Content-Type": "application/json"
